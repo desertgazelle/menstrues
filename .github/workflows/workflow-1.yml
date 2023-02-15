@@ -1,7 +1,7 @@
 name: GithHub Action 1
 on: push
 jobs:
-  First-Action:
+  First-Job:
     name: First Action
     runs-on: ubuntu-latest
     steps:
@@ -47,3 +47,10 @@ jobs:
           ls ${{ runner.tool_cache }}
           
       - run: echo "This job's status is ${{ job.status }}."
+      
+  Second-Job:
+    name: The second job running on another runner
+    runs-on: windows-latest
+    needs: First-Job
+    steps:
+      - run: echo "this job is now running on a ${{ runner.os }} server hosted by GitHub."
