@@ -12,7 +12,7 @@ jobs:
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub"
       
       # Information about the repositiory and branch
-      - run: echo "The name of your branch is ${{ gitbub.ref }} and your repository is ${{ gitub.repository }}."
+      - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ gitub.repository }}."
       
       # Use Action located in https://github.com/actions
       - name: Check out repository code
