@@ -17,7 +17,7 @@ jobs:
     environment: ${{ github.event.inputs.env_to_deploy }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ jobs.build.environment }}"
+      - run: echo "${{ toJSON(jobs) }}"
       - name: Checkout repo
         uses: actions/checkout@v3.3.0
 
