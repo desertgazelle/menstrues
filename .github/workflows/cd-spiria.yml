@@ -1,4 +1,4 @@
-name: CD-SPIRIA
+name: CDSPIRIA
 on:
   workflow_dispatch:
     inputs:
