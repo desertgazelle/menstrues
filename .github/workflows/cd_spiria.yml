@@ -3,12 +3,11 @@ on:
   workflow_dispatch:
     inputs:
       env_to_deploy:
-        description: 'Environment to deploy to'
+        type: environment
+        description: 'Select an environment'
         required: true
         default: SPIRIAPROD
-        options:
-          - SPIRIAPROD
-          - SPIRIASTAGING  
+        
   push:
     branches: main    
 
