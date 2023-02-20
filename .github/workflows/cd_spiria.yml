@@ -15,6 +15,8 @@ jobs:
   build:
     name: Deploy to Spiria static web app
     environment: ${{ github.event.inputs.env_to_deploy }}
+    env:
+      token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -36,4 +38,5 @@ jobs:
         with:
           action: "upload"
           app_location: "/dist"
-          azure_static_web_apps_api_token: ${{ env.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          skip_app_build: true
+          azure_static_web_apps_api_token: ${{ env.token }}
