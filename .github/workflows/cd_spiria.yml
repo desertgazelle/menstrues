@@ -10,15 +10,12 @@ on:
           - SPIRIAPROD
           - SPIRIASTAGING  
   push:
-    branches: main
-      env_to_deploy:
-        description: 'Environment to deploy to'
-        required: true
-        default: SPIRIAPROD 
+    branches: main    
+
 jobs:
   build:
     name: Deploy to Spiria static web app
-    environment: SPIRIAPROD
+    environment: ${{ github.event.inputs.env_to_deploy }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
