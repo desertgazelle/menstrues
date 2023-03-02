@@ -9,6 +9,9 @@ on:
 env:
   IMAGE_NAME: menstrues
   IMAGE_TAG: latest
+  VITE_MSAL_CONFIG_AUTH_CLIENTID: ${{ secrets.VITE_MSAL_CONFIG_AUTH_CLIENTID }}
+  VITE_MSAL_CONFIG_AUTH_AUTHORITY: ${{ secrets.VITE_MSAL_CONFIG_AUTH_AUTHORITY }}
+  VITE_MSAL_CONFIG_AUTH_REDIRECTUI: ${{ secrets.VITE_MSAL_CONFIG_AUTH_REDIRECTUI }}
 
 jobs:
   build:
@@ -18,6 +21,17 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3.3.0
 
+      - name: Setup Node
+        uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1.6.0
+
+      - name: Build project
+        run: npm run build
+        
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
 
