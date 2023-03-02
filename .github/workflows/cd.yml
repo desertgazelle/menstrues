@@ -34,9 +34,6 @@ jobs:
         
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
-      
-      - name : List current directory content
-        run: ls
 
       - name: Build and Push image
         uses: docker/build-push-action@v4.0.0
@@ -45,3 +42,4 @@ jobs:
           build-args: |
             version=${{ env.IMAGE_TAG }}
           tags: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          directory : dist
