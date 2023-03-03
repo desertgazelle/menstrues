@@ -14,7 +14,13 @@ on:
       env_to_deploy:
         description: 'Environment to deploy to'
         required: true
-        default: SPIRIAPROD 
+        default: SPIRIAPROD
+
+env:
+  VITE_MSAL_CONFIG_AUTH_CLIENTID: ${{ secrets.VITE_MSAL_CONFIG_AUTH_CLIENTID }}
+  VITE_MSAL_CONFIG_AUTH_AUTHORITY: ${{ secrets.VITE_MSAL_CONFIG_AUTH_AUTHORITY }}
+  VITE_MSAL_CONFIG_AUTH_REDIRECTUI: ${{ secrets.SPIRIA_VITE_MSAL_CONFIG_AUTH_REDIRECTUI }}
+  
 jobs:
   build:
     name: Deploy to Spiria static web app
