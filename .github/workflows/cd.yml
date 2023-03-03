@@ -41,6 +41,7 @@ jobs:
       - name: Build and Push image
         uses: docker/build-push-action@v4.0.0
         with:
+          context: .
           push: true
           build-args: |
             version=${{ env.IMAGE_TAG }}
