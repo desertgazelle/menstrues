@@ -32,9 +32,6 @@ jobs:
       - name: Build project
         run: npm run build
         
-      - name: List current directory
-        run: ls -al
-        
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
 
@@ -46,4 +43,3 @@ jobs:
           build-args: |
             version=${{ env.IMAGE_TAG }}
           tags: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-          directory : dist
